@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - MatrixStore</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #6200ea, #3700b3);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo i {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+    }
+
+    header .logo h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul li a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 2rem;
+      background: linear-gradient(135deg, #f4f4f9, #e0e0e7);
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    .contact-container h2 {
+      text-align: center;
+      color: #6200ea;
+      margin-bottom: 1rem;
+    }
+
+    .contact-container p {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+
+    .contact-content {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      flex: 1;
+    }
+
+    .contact-form .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #6200ea;
+      box-shadow: 0 0 8px rgba(98, 0, 234, 0.3);
+      outline: none;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-form button {
+      background: linear-gradient(135deg, #6200ea, #3700b3);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+      width: 100%;
+    }
+
+    .contact-form button:hover {
+      background: linear-gradient(135deg, #3700b3, #6200ea);
+      transform: translateY(-2px);
+    }
+
+    .contact-info {
+      flex: 1;
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h3 {
+      margin-bottom: 1rem;
+      color: #6200ea;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .contact-info ul li {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #333;
+    }
+
+    .contact-info ul li i {
+      color: #6200ea;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      color: #6200ea;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #3700b3;
+      transform: translateY(-2px);
+    }
+
+    .map {
+      margin-top: 2rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, #6200ea, #3700b3);
+      color: white;
+      margin-top: 2rem;
+      animation: slideInUp 0.5s ease-out;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo1.png" alt="MatrixStore Logo" width="60" height="60" style="margin-right: 0.5rem;">
+      <h1>MatrixStore</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="computers.html"><i class="fas fa-laptop"></i> Computers</a></li>
+        <li><a href="mobiles.html"><i class="fas fa-mobile-alt"></i> Mobiles</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="contact">
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <p>Have questions or feedback? We'd love to hear from you!</p>
+      <div class="contact-content">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <form>
+            <div class="input-group">
+              <label for="name"><i class="fas fa-user"></i> Name:</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+              <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+              <label for="message"><i class="fas fa-comment"></i> Message:</label>
+              <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA</li>
+            <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+            <li><i class="fas fa-envelope"></i> info@techstore.com</li>
+          </ul>
+          <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Map -->
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3172.312389579345!2d-122.02822068469074!3d37.33464397984199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb596e9e188fd%3A0x3b0d8391510688f0!2sApple%20Park!5e0!3m2!1sen!2sus!4v1633039291416!5m2!1sen!2sus"
+          width="100%"
+          height="300"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MatrixStore. All rights reserved.</p>
+  </footer>
+</body>
+</html>

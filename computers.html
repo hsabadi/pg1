@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatrixStore - Mobile Devices</title>
+  <!-- إضافة Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- الأنماط الداخلية -->
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #6200ea, #3700b3);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    nav ul li a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+    header .logo i {
+      font-size: 2rem;
+      margin-right: 0.5rem;
+    }
+    header .logo h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: 600;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 70vh;
+      background: linear-gradient(135deg, #6200ea, #3700b3);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    /* Product Cards */
+    .products {
+      padding: 2rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .product-card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card img {
+      width: 100%;
+      height: 300px; /* ارتفاع ثابت */
+      object-fit: cover; /* ضبط الصورة لتغطية المساحة بدون تشويه */
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .product-card img:hover {
+      transform: scale(1.05);
+    }
+    .product-card h3 {
+      margin: 1rem 0 0.5rem;
+    }
+    .product-card .price {
+      font-size: 1.25rem;
+      color: #6200ea;
+      font-weight: bold;
+    }
+    .product-card button {
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .product-card button:hover {
+      background-color: #3700b3;
+      transform: scale(1.05);
+    }
+    /* Comments Section */
+    .comments-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .comments-section h3 {
+      margin-bottom: 1rem;
+      color: #6200ea;
+    }
+    .comment {
+      background: white;
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .comment strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .comment .rating {
+      color: gold;
+      margin-bottom: 0.5rem;
+    }
+    .comment p {
+      margin: 0;
+      color: #555;
+    }
+    /* Comment Form */
+    .comment-form {
+      margin-top: 1rem;
+    }
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    .rating-stars {
+      display: flex;
+      gap: 0.25rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .rating-stars span {
+      color: #ccc; /* لون النجوم الافتراضي */
+      transition: color 0.3s ease;
+    }
+    .rating-stars span:hover,
+    .rating-stars span.active {
+      color: gold; /* لون النجوم عند التحديد */
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, #6200ea, #3700b3);
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/logo1.png" alt="MatrixStore Logo" width="60" height="60" style="margin-right: 0.5rem;">
+      <h1>MatrixStore</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="computers.html"><i class="fas fa-laptop"></i> Computers</a></li>
+        <li><a href="mobiles.html"><i class="fas fa-mobile-alt"></i> Mobiles</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+        <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Explore Our Latest Computers</h2>
+      <p>Find the perfect Computers for your needs with our wide selection of models and versions.</p>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products">
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="images/MSI TITAN HX.jpg" alt="MSI TITAN 80 HX">
+        <h3>MSI TITAN 80 HX</h3>
+        <p class="price">$3799</p>
+        <button>Buy Now</button>
+      </div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="images/AZUS.jpg " alt="ASUS">
+        <h3>ASUS ROG</h3>
+        <p class="price">$1799</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="images/ASUS ZEN.jpg" alt="ASUS">
+        <h3>ASUS ZENBOOK</h3>
+        <p class="price">$799</p>
+        <button>Buy Now</button>
+      </div>
+      <div class="product-card">
+        <img src="images/lenovo.jpg" alt="LENOVO">
+        <h3>LENOVO YOGA 9I</h3>
+        <p class="price">$1299</p>
+        <button>Buy Now</button>
+      </div>
+      
+      <!-- Add more products here -->
+    </div>
+  </section>
+  <!-- Comments Section -->
+  <section class="comments-section">
+    <h3>User Reviews</h3>
+    <div class="comment">
+      <strong>John Doe</strong>
+      <div class="rating">★★★★☆</div>
+      <p>Great Computer! The price and quality is amazing.</p>
+    </div>
+    <div class="comment">
+      <strong>Jane Smith</strong>
+      <div class="rating">★★★★★</div>
+      <p>Love the design and performance of the Asus.</p>
+    </div>
+    <div class="comment">
+      <strong>Hussien Haider</strong>
+      <div class="rating">★★★★★</div>
+      <p>I really love it, i hope get it someday</p>
+    </div>
+    <!-- Comment Form -->
+    <div class="comment-form">
+      <h4>Add Your Review</h4>
+      <input type="text" placeholder="Your Name" required>
+      <textarea placeholder="Your Comment" rows="4" required></textarea>
+      <div class="rating-stars" id="ratingStars">
+        <span data-value="1">★</span>
+        <span data-value="2">★</span>
+        <span data-value="3">★</span>
+        <span data-value="4">★</span>
+        <span data-value="5">★</span>
+      </div>
+      <button onclick="submitReview()">Submit Review</button>
+    </div>
+  </section>
+  
+
+  <script>
+    // JavaScript to handle star rating
+    const stars = document.querySelectorAll('#ratingStars span');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-value');
+        updateStars();
+      });
+
+      star.addEventListener('mouseover', () => {
+        if (!selectedRating) {
+          updateStars(star.getAttribute('data-value'));
+        }
+      });
+
+      star.addEventListener('mouseout', () => {
+        if (!selectedRating) {
+          updateStars();
+        }
+      });
+    });
+
+    function updateStars(rating = selectedRating) {
+      stars.forEach((star, index) => {
+        star.classList.toggle('active', index < rating);
+      });
+    }
+
+    function submitReview() {
+      const name = document.querySelector('.comment-form input').value;
+      const comment = document.querySelector('.comment-form textarea').value;
+
+      if (name && comment && selectedRating) {
+        const newComment = `
+          <div class="comment">
+            <strong>${name}</strong>
+            <div class="rating">${'★'.repeat(selectedRating)}</div>
+            <p>${comment}</p>
+          </div>
+        `;
+        document.querySelector('.comments-section').insertAdjacentHTML('beforeend', newComment);
+
+        // Reset form
+        document.querySelector('.comment-form input').value = '';
+        document.querySelector('.comment-form textarea').value = '';
+        selectedRating = 0;
+        updateStars();
+      } else {
+        alert('Please fill all fields and select a rating.');
+      }
+    }
+  </script>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MatrixStore. All rights reserved.</p>
+  </footer>
+</body>
+</html>
